@@ -2,15 +2,20 @@ import { useState } from "react";
 import { useFetchData } from "../hooks/useFetchData";
 
 export function TaskList() {
-    const [data, loading] = useFetchData('https://jsonplaceholder.typicode.com/todos');
+    const [data, loading, error] = useFetchData('https://jsonplaceholder.typicode.com/todos');
 
 
 
-    if (loading){
+    if(loading){
         return (
-            <h1>Loading...</h1>
+            <p>Loading...</p>
         )
-    } 
+    }
+    if(error){
+        return(
+            <p>Could not fetch data!</p>
+        )
+    }
     return (
         <>
             <h1>Task List</h1>
