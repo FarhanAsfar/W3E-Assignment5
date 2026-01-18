@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { useFetchData } from "../hooks/useFetchData";
+import { SearchBar } from "./SearchBar";
 
 export function TaskList() {
     const [data, loading, error] = useFetchData('https://jsonplaceholder.typicode.com/todos');
 
+    const [searchTerm, setSearchTerm] = useState('');
 
-
+    const filteredData = data?.filter((task) => {
+        return task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    });
+    
     if(loading){
         return (
             <p>Loading...</p>
@@ -19,6 +24,12 @@ export function TaskList() {
     return (
         <>
             <h1>Task List</h1>
+
+            <SearchBar 
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+            />
+            
             <div className="flex flex-wrap">
                 {
 
@@ -37,6 +48,19 @@ export function TaskList() {
 
                                 </a>
                             </div>
+                        )
+                    })
+                }
+            </div>
+
+            <div>
+                {
+                    filteredData.map((task) => {
+                        return(
+                            <>
+                                <p>Task Number: {task.id}</p>
+                                <p>Task Title: {task.title}</p>
+                            </>
                         )
                     })
                 }
