@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useFetchData } from "../hooks/useFetchData";
 import { SearchBar } from "./SearchBar";
+import { Spinner } from "./Spinner";
 
 export function TaskList() {
     const [data, loading, error] = useFetchData('https://jsonplaceholder.typicode.com/todos');
@@ -13,7 +14,7 @@ export function TaskList() {
     
     if(loading){
         return (
-            <p>Loading...</p>
+            <Spinner />
         )
     }
     if(error){
