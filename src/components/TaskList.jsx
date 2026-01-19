@@ -87,7 +87,7 @@ export function TaskList() {
                                     <button className={`px-3 py-1 rounded-md text-sm font-semibold transition-colors
                                     ${
                                         isCompleted ? 
-                                        "bg-green-100 text-green"
+                                        "bg-green-100 text-green-700 border border-green-300 hover:bg-green-200"
                                         : "bg-red-100 text-yellow"
                                     }`}
                                     onClick={() => toggleTaskStatus(task.id, isCompleted)}
@@ -96,7 +96,7 @@ export function TaskList() {
                                     </button>
                                 </div>
 
-                                <a href="#" className="inline-flex items-center text-black bg-brand box-border border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                                <a href="#" className="inline-flex items-center text-black bg-brand box-border border mt-auto hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
                                     Task Details
 
                                 </a>
