@@ -29,5 +29,22 @@ export function TaskDetail () {
                 console.error("Could not fetch task status", error);
             }
         }
-    },[])
+    },[data])
+
+    //function to toggle the task status on the task detail page
+    const toggleTaskStatus = () => {
+        const newStatus = !taskStatus;
+        setTaskStatus(newStatus);
+
+        //updating the status on the local storage
+        try {
+            const savedStatus = localStorage.getItem("task-status");
+            const statuses = savedStatus ? JSON.parse(savedStatus) : {};
+
+            statuses[data.id] = newStatus;
+            localStorage.setItem("task-statuses", JSON.stringify(statuses));
+        } catch (error) {
+            console.error("Could not save task status", error)
+        }
+    }
 }
