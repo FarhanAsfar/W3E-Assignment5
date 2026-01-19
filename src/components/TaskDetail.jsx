@@ -16,7 +16,7 @@ export function TaskDetail() {
     useEffect(() => {
         if (data) {
             try {
-                const savedStatus = localStorage.getItem("task-status");
+                const savedStatus = localStorage.getItem("task-statuses");
                 if (savedStatus) {
                     const statuses = JSON.parse(savedStatus);
                     //if this task has a saved task status then use that otherwise use the fetched status
@@ -39,7 +39,7 @@ export function TaskDetail() {
 
         //updating the status on the local storage
         try {
-            const savedStatus = localStorage.getItem("task-status");
+            const savedStatus = localStorage.getItem("task-statuses");
             const statuses = savedStatus ? JSON.parse(savedStatus) : {};
 
             statuses[data.id] = newStatus;
@@ -103,6 +103,8 @@ export function TaskDetail() {
                             </div>
                         </div>
                     </div>
+
+                    <button onClick={() => navigate("/")} className="m-6 font-medium text-blue-600 hover:text-blue-800">← Back to Task List</button>
                 </div>
             </div>
         </>
