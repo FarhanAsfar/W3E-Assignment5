@@ -3,6 +3,7 @@ import { useFetchData } from "../hooks/useFetchData";
 import { SearchBar } from "../components/SearchBar";
 import { Spinner } from "../components/Spinner";
 import { Link } from "react-router-dom";
+import { ErrorMessage } from "../components/ErrorMessage";
 
 export function TaskList() {
     const [data, loading, error] = useFetchData('https://jsonplaceholder.typicode.com/todos');
@@ -81,7 +82,7 @@ export function TaskList() {
     }
     if (error) {
         return (
-            <p>Could not fetch data!</p>
+            <ErrorMessage />
         )
     }
     return (
