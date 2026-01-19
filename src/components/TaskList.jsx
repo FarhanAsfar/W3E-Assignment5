@@ -19,6 +19,12 @@ export function TaskList() {
     const totalPages = Math.ceil((filteredData?.length || 0) / taskPerPage); //dividing total tasks by 20 to get total pages and rounding it up using math.ceil
 
 
+    //changing page according to page number
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber)
+        window.scrollTo({top:0, behavior:"smooth"})
+    }
+
 
     //filtering data based on search input
     const filteredData = data?.filter((task) => {
