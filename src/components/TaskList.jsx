@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFetchData } from "../hooks/useFetchData";
 import { SearchBar } from "./SearchBar";
 import { Spinner } from "./Spinner";
@@ -29,7 +29,16 @@ export function TaskList() {
         )
     }
 
-    
+    //saving task statuses on session storage
+    useEffect(() => {
+        if(Object.keys(taskStatus).length>0){
+            try {
+                sessionStorage.setItem("task-statuses", JSON.stringify(taskStatus));
+            } catch (error) {
+                console.error("Could not save task status", error);
+            }
+        }
+    }, [taskStatus]);
     
     if(loading){
         return (
