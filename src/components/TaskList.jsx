@@ -33,8 +33,7 @@ export function TaskList() {
             <div className="flex flex-wrap">
                 {
 
-                    data &&
-                    data.map((task) => {
+                    filteredData?.map((task) => {
                         return (
                             <div key={task.id}
                                 className="flex flex-col bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs"
@@ -48,19 +47,6 @@ export function TaskList() {
 
                                 </a>
                             </div>
-                        )
-                    })
-                }
-            </div>
-
-            <div>
-                {
-                    filteredData.map((task) => {
-                        return(
-                            <>
-                                <p>Task Number: {task.id}</p>
-                                <p>Task Title: {task.title}</p>
-                            </>
                         )
                     })
                 }
