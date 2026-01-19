@@ -2,6 +2,8 @@ import './App.css'
 import { TaskList } from './pages/TaskList'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { TaskDetail } from './pages/TaskDetail'
+import { Home } from './pages/Home'
+import { NotFound } from './pages/NotFound'
 
 function App() {
   
@@ -9,8 +11,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<TaskList />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/task-list" element={<TaskList />} />
           <Route path="/task/:id" element={<TaskDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
