@@ -1,4 +1,4 @@
-export function SearchBar({ searchTerm, setSearchTerm, onSearch }) {
+export function SearchBar({ searchTerm, setSearchTerm}) {
 
     return (
         <>
