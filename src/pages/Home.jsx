@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Home() {
   return (
     <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center px-6">
@@ -20,14 +22,14 @@ export function Home() {
               A simple and efficient way to organize, track, and complete your daily tasks.
             </p>
 
-            <a
-              href="/task-list"
+            <Link
+              to="/task-list"
               className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-lg
                          bg-slate-900 text-white text-sm font-medium
                          hover:bg-slate-800 transition-colors"
             >
               Open Task List
-            </a>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center justify-center bg-slate-50 rounded-r-2xl">
