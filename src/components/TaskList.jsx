@@ -25,6 +25,12 @@ export function TaskList() {
         window.scrollTo({top:0, behavior:"smooth"})
     }
 
+    //when seaarch input changes, resetting the page to 1
+    const handleSearchTermChange = (term) => {
+        setSearchTerm(term);
+        setCurrentPage(1);
+    }
+
 
     //filtering data based on search input
     const filteredData = data?.filter((task) => {
