@@ -22,6 +22,13 @@ export function TaskList() {
         }));
     };
 
+    //getting task statuses, first from the local state and then from the original data 
+    const getTaskStatus = (task)=> {
+        return (
+            task.id in taskStatus ? taskStatus[task.id] : task.completed
+        )
+    }
+
     
     
     if(loading){
