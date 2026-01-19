@@ -17,7 +17,7 @@ export function useFetchData(url) {
                 setError(err);
                 setLoading(false);
             })
-       }, 2000)
+       }, 1000)
     }, [url])
 
     return [data, loading, error];
