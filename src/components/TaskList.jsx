@@ -8,7 +8,17 @@ export function TaskList() {
     const [data, loading, error] = useFetchData('https://jsonplaceholder.typicode.com/todos');
 
     const [searchTerm, setSearchTerm] = useState('');
-    const [taskStatus, setTaskStatus] = useState({})
+    const [taskStatus, setTaskStatus] = useState({});
+    const [currentPage, setCurrentPage] = useState(1);
+    const taskPerPage = 20;
+
+    //calculation for pagination
+    const indexOfLastTask = currentPage * taskPerPage; //multiplying the current page number by 20(tasks per page) -> 1*20, 2*20
+    const indexofFirstTask = indexOfLastTask - taskPerPage; //subtracting 20 from the last index to get the starting position 
+    const currentTask = filteredData?.slice(indexofFirstTask, indexOfLastTask); //using slice to get the tasks for the current page. e.g: slice(20,40)->gets(item 20-39())
+    const totalPages = Math.ceil((filteredData?.length || 0) / taskPerPage); //dividing total tasks by 20 to get total pages and rounding it up using math.ceil
+
+
 
     //filtering data based on search input
     const filteredData = data?.filter((task) => {
