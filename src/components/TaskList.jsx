@@ -7,10 +7,22 @@ export function TaskList() {
     const [data, loading, error] = useFetchData('https://jsonplaceholder.typicode.com/todos');
 
     const [searchTerm, setSearchTerm] = useState('');
+    const [taskStatus, setTaskStatus] = useState({})
 
+    //filtering data based on search input
     const filteredData = data?.filter((task) => {
         return task.title.toLowerCase().includes(searchTerm.toLowerCase())
     });
+
+    //toggle task status button between DONE & DUE
+    const toggleTaskStatus = (taskId, currentStatus) => {
+        setTaskStatus((prev) => ({
+            ...prev,
+            [taskId]: !currentStatus
+        }));
+    };
+
+    
     
     if(loading){
         return (
@@ -35,6 +47,8 @@ export function TaskList() {
                 {
 
                     filteredData?.map((task) => {
+
+                        
                         return (
                             <div key={task.id}
                                 className="flex flex-col bg-neutral-primary-soft  max-w-sm p-6 border border-default rounded-base shadow-xs h-full"
@@ -44,7 +58,14 @@ export function TaskList() {
                                 
                                 <div className="flex justify-between items-center mb-4">
                                     <p className="font-medium">Task Status:</p>
-                                    <button className="px-3 py-1 rounded-md text-sm font-semibold transition-colors">
+                                    <button className={`px-3 py-1 rounded-md text-sm font-semibold transition-colors
+                                    ${
+                                        isCompleted ? 
+                                        "bg-green-100 text-green"
+                                        : "bg-red-100 text-yellow"
+                                    }`}
+                                    onClick={() => toggleTaskStatus(task.id, isCompleted)}
+                                    >
                                         DONE
                                     </button>
                                 </div>
