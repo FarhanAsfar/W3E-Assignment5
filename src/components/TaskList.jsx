@@ -33,7 +33,7 @@ export function TaskList() {
     useEffect(() => {
         if(Object.keys(taskStatus).length>0){
             try {
-                sessionStorage.setItem("task-statuses", JSON.stringify(taskStatus));
+                localStorage.setItem("task-statuses", JSON.stringify(taskStatus));
             } catch (error) {
                 console.error("Could not save task status", error);
             }
@@ -43,7 +43,7 @@ export function TaskList() {
     //loading task statuses from the session storage when the component mounts so that it shows persistent task status
     useEffect(() => {
         try {
-            const savedStatus = sessionStorage.getItem("task-statuses");
+            const savedStatus = localStorage.getItem("task-statuses");
             if(savedStatus){
                 setTaskStatus(JSON.parse(savedStatus));
             }
