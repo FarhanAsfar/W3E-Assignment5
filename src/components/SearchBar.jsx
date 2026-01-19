@@ -2,7 +2,7 @@ export function SearchBar({ searchTerm, setSearchTerm}) {
 
     return (
         <>
-            <div className="flex justify-center w-full mb-6">
+            <div className="flex justify-center w-full m-6">
                 <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
                     <div className="relative flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600">
