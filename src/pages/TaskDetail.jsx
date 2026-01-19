@@ -104,7 +104,7 @@ export function TaskDetail() {
                         </div>
                     </div>
 
-                    <button onClick={() => navigate("/")} className="m-6 font-medium text-blue-600 hover:text-blue-800">← Back to Task List</button>
+                    <button onClick={() => navigate("/task-list")} className="m-6 font-medium text-blue-600 hover:text-blue-800">← Back to Task List</button>
                 </div>
             </div>
         </>
