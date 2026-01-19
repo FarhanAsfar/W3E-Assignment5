@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFetchData } from "../hooks/useFetchData";
 import { SearchBar } from "./SearchBar";
 import { Spinner } from "./Spinner";
+import { Link } from "react-router-dom";
 
 export function TaskList() {
     const [data, loading, error] = useFetchData('https://jsonplaceholder.typicode.com/todos');
@@ -96,10 +97,11 @@ export function TaskList() {
                                     </button>
                                 </div>
 
-                                <a href="#" className="inline-flex items-center text-black bg-brand box-border border mt-auto hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                                <Link to={`/task/${task.id}`} 
+                                className="inline-flex items-center text-black bg-brand box-border border mt-auto hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
                                     Task Details
 
-                                </a>
+                                </Link>
                             </div>
                         )
                     })
