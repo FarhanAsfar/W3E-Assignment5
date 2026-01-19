@@ -12,6 +12,11 @@ export function TaskList() {
     const [currentPage, setCurrentPage] = useState(1);
     const taskPerPage = 20;
 
+    //filtering data based on search input
+    const filteredData = data?.filter((task) => {
+        return task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    });
+
     //calculation for pagination
     const indexOfLastTask = currentPage * taskPerPage; //multiplying the current page number by 20(tasks per page) -> 1*20, 2*20
     const indexofFirstTask = indexOfLastTask - taskPerPage; //subtracting 20 from the last index to get the starting position 
@@ -30,12 +35,6 @@ export function TaskList() {
         setSearchTerm(term);
         setCurrentPage(1);
     }
-
-
-    //filtering data based on search input
-    const filteredData = data?.filter((task) => {
-        return task.title.toLowerCase().includes(searchTerm.toLowerCase())
-    });
 
     //toggle task status button between DONE & DUE
     const toggleTaskStatus = (taskId, currentStatus) => {
@@ -91,7 +90,7 @@ export function TaskList() {
 
             <SearchBar
                 searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
+                setSearchTerm={handleSearchTermChange}
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 m-16">
