@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFetchData } from "../hooks/useFetchData";
-import { Spinner } from "./Spinner";
+import { Spinner } from "../components/Spinner";
 
 
 export function TaskDetail() {

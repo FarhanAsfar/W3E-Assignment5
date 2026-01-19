@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetchData } from "../hooks/useFetchData";
-import { SearchBar } from "./SearchBar";
-import { Spinner } from "./Spinner";
+import { SearchBar } from "../components/SearchBar";
+import { Spinner } from "../components/Spinner";
 import { Link } from "react-router-dom";
 
 export function TaskList() {

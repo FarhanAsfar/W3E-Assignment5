@@ -1,7 +1,7 @@
 import './App.css'
-import { TaskList } from './components/TaskList'
+import { TaskList } from './pages/TaskList'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { TaskDetail } from './components/TaskDetail'
+import { TaskDetail } from './pages/TaskDetail'
 
 function App() {
   
