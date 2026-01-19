@@ -73,10 +73,8 @@ export function TaskList() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 m-16">
                 {
-
                     filteredData?.map((task) => {
-
-                        
+                        const isCompleted = getTaskStatus(task); //getting the current status of the task.
                         return (
                             <div key={task.id}
                                 className="flex flex-col bg-neutral-primary-soft  max-w-sm p-6 border border-default rounded-base shadow-xs h-full"
@@ -94,7 +92,7 @@ export function TaskList() {
                                     }`}
                                     onClick={() => toggleTaskStatus(task.id, isCompleted)}
                                     >
-                                        DONE
+                                        {isCompleted ? "DONE" : "DUE"}
                                     </button>
                                 </div>
 
