@@ -39,6 +39,18 @@ export function TaskList() {
             }
         }
     }, [taskStatus]);
+
+    //loading task statuses from the session storage when the component mounts so that it shows persistent task status
+    useEffect(() => {
+        try {
+            const savedStatus = sessionStorage.getItem("task-statuses");
+            if(savedStatus){
+                setTaskStatus(JSON.parse(savedStatus));
+            }
+        } catch (error) {
+            console.error("Could not load task statuses", error);
+        }
+    },[]);
     
     if(loading){
         return (
