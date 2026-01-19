@@ -29,5 +29,5 @@ export function TaskDetail () {
                 console.error("Could not fetch task status", error);
             }
         }
-    })
+    },[])
 }
