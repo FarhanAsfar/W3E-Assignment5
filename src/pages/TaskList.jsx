@@ -4,8 +4,10 @@ import { SearchBar } from "../components/SearchBar";
 import { Spinner } from "../components/Spinner";
 import { Link } from "react-router-dom";
 import { ErrorMessage } from "../components/ErrorMessage";
+import { useTheme } from "../hooks/useTheme";
 
 export function TaskList() {
+    const { theme } = useTheme();
     const [data, loading, error] = useFetchData('https://jsonplaceholder.typicode.com/todos');
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -99,17 +101,20 @@ export function TaskList() {
                         const isCompleted = getTaskStatus(task); //getting the current status of the task.
                         return (
                             <div key={task.id}
-                                className="flex flex-col bg-neutral-primary-soft  max-w-sm p-6 border border-default rounded-base shadow-xs h-full"
+                                className="flex flex-col bg-white dark:bg-slate-800 max-w-sm p-6 border border-slate-200  dark:border-slate-700 rounded-sl shadow-sm p-6 h-full"
                             >
-                                <h2 className="mb-2">Task Number: {task.id}</h2>
-                                <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">{task.title}</h5>
+                                <h2 className="mb-2  text-sm text-slate-500 dark:text-slate-300">Task Number: {task.id}</h2>
 
-                                <div className="flex justify-between items-center mb-4">
-                                    <p className="font-medium">Task Status:</p>
+                                <h5 className="mb-3 text-lg font-semibold tracking-tight leading-8 text-slate-900 dark:text-white">{task.title}</h5>
+
+                                <div className="flex justify-between items-center mb-6">
+
+                                    <p className="text-sm font-medium text-slate-600 dark:text-slate-300">Task Status:</p>
+
                                     <button className={`px-3 py-1 rounded-md text-sm font-semibold transition-colors
                                     ${isCompleted ?
-                                            "bg-green-100 text-green-700 border border-green-300 hover:bg-green-200"
-                                            : "bg-red-100 text-yellow"
+                                            "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 border border-green-300 hover:bg-green-200 dark:bg-green-900 dark:text-green-300 dark:border-green-700 dark:hover:bg-green-800"
+                                            : "bg-red-100 text-yellow dark:bg-red-900 dark:text-red-300 dark:border-red-700"
                                         }`}
                                         onClick={() => toggleTaskStatus(task.id, isCompleted)}
                                     >
@@ -118,7 +123,14 @@ export function TaskList() {
                                 </div>
 
                                 <Link to={`/task/${task.id}`}
-                                    className="inline-flex items-center text-black bg-brand box-border border mt-auto hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                                    className=" mt-auto
+                  inline-flex items-center justify-center
+                  px-4 py-2 text-sm font-medium
+                  rounded-lg
+                  bg-slate-900 text-white
+                  hover:bg-slate-800
+                  dark:bg-blue-600 dark:hover:bg-blue-700
+                  transition-colors">
                                     Task Details
 
                                 </Link>
@@ -144,8 +156,8 @@ export function TaskList() {
                                 key={pageNum}
                                 onClick={() => handlePageChange(pageNum)}
                                 className={`px-3 py-2 border rounded-md ${currentPage === pageNum
-                                        ? "bg-blue-600 text-white border-blue-600"
-                                        : "bg-white text-gray-700 hover:bg-gray-100"
+                                    ? "bg-blue-600 text-white border-blue-600"
+                                    : "bg-white text-gray-700 hover:bg-gray-100"
                                     }`}
                             >
                                 {pageNum}
