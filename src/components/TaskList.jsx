@@ -126,8 +126,18 @@ export function TaskList() {
                                 </Link>
                             </div>
                         )
-                    })
-                }
+                    })}
+            </div>
+
+            {/* pagination view */}
+            <div className="flex">
+                <button
+                    onClick={()=> handlePageChange(currentPage-1)}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 border rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
+                >
+                    Previous
+                </button>
             </div>
         </>
     )
