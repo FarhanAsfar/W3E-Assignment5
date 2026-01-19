@@ -69,3 +69,15 @@ json{
 
 **Searching Tasks by Titile**
 
+<img width="1493" height="628" alt="searcj" src="https://github.com/user-attachments/assets/a29ffaec-6c0c-4299-8b74-ef8f54fe3bb7" />
+
+
+### Features
+- Toggling is persistent between refresh
+- Added Pagination
+- Intentional delay is set to show loading icon
+
+### Limitations
+- Code could have been more organized
+- Css/ Dark mode functionality should be better
+- Throttling could have been added for api calls
