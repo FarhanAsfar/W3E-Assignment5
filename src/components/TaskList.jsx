@@ -95,7 +95,7 @@ export function TaskList() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 m-16">
                 {
-                    filteredData?.map((task) => {
+                    currentTask?.map((task) => {
                         const isCompleted = getTaskStatus(task); //getting the current status of the task.
                         return (
                             <div key={task.id}
@@ -128,7 +128,7 @@ export function TaskList() {
             </div>
 
             {/* pagination view */}
-            <div className="flex">
+            <div className="flex justify-center items-center gap-2 mt-8 mb-4">
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
