@@ -4,12 +4,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { TaskDetail } from './pages/TaskDetail'
 import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
+import { Navbar } from './components/Navbar'
 
 function App() {
   
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/task-list" element={<TaskList />} />
