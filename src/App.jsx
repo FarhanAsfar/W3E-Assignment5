@@ -1,12 +1,18 @@
-import { useEffect, useState } from 'react'
 import './App.css'
 import { TaskList } from './components/TaskList'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { TaskDetail } from './components/TaskDetail'
 
 function App() {
   
   return (
     <>
-      <TaskList />      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TaskList />} />
+          <Route path="/task/:id" element={<TaskDetail />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
